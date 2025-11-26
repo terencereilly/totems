@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Totem | AR experience by Paweł Dudko</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+        <meta name="author" content="Paweł Dudko" />
+        <meta name="description" content="Generative Augmented Reality Experience by Paweł Dudko." />
+
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon"/>  
+
+        <meta property="og:url"   content="https://pdudko.com/totem/"/>
+        <meta property="og:title" content="Totem | AR experience by Paweł Dudko"/>
+        <meta property="og:description" content="Generative Augmented Reality Experience by Paweł Dudko"/>
+        <meta property="og:image" content="https://pdudko.com/totem/og-image.png"/>
+        <meta property="og:image:url" content="https://pdudko.com/totem/og-image.png"/>
+        <meta property="og:image:width" content="1200"/>
+        <meta property="og:image:height" content="1200"/>
+        
+        <meta property="twitter:title" content="Totem | AR experience by Paweł Dudko" />
+        <meta property="twitter:image" content="https://pdudko.com/totem/og-image.png"/>
+    
+
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                background-color: #000;
+            }
+
+            .loader {
+                border: 2px solid;
+                border-color: transparent #FFF;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                display: inline-block;
+                position: relative;
+                box-sizing: border-box;
+                animation: rotation 2s linear infinite;
+            }
+            .loader::after {
+                content: '';  
+                box-sizing: border-box;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                border: 24px solid;
+                border-color: transparent rgba(255, 255, 255, 0.15);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            @keyframes rotation {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+    
+            /* .hide-loader{
+                display:none;
+            } */
+
+            .blurred {
+                filter: blur(0.75vw);
+            }
+
+            .blurred-background {
+                backdrop-filter: blur(2vw);
+            }
+
+            /* ANIMATION FADE IN 5 seconds */
+            .fade-in-5 {
+                animation: fadeIn 5s;
+                -webkit-animation: fadeIn 5s;
+                -moz-animation: fadeIn 5s;
+                -o-animation: fadeIn 5s;
+                -ms-animation: fadeIn 5s;
+            }
+
+            @keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            @-moz-keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            @-webkit-keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            @-o-keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            @-ms-keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            /* ANIMATION FADE IN 1 second */
+            .fade-in-1 {
+                animation: fadeInQuick 1s;
+                -webkit-animation: fadeInQuick 1s;
+                -moz-animation: fadeInQuick 1s;
+                -o-animation: fadeInQuick 1s;
+                -ms-animation: fadeInQuick 1s;
+            }
+
+            @keyframes fadeInQuick {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            @-moz-keyframes fadeInQuick {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            @-webkit-keyframes fadeInQuick {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            @-o-keyframes fadeInQuick {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+            @-ms-keyframes fadeInQuick {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+
+        </style>
+
+     <!--   <script async src="https://api.countapi.xyz/hit/pdtotem/01b6e291-5259-414f-b6f9-f73446100a60?callback=websiteVisits"></script> -->
+
+  </head>
+  <body>
+        
+        <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/"
+        }
+      }
+    </script>
+
+        <!-- canvas filters -->
+        <script type="text/javascript">
+            try {
+                var script = document.createElement('script');
+                script.src = './libs/imagefilters.js';
+                document.head.appendChild(script);
+            } catch(e) {
+                console.warn('Error loading imagefilters:', e);
+            }
+        </script>
+        
+        <!-- Device UUID script disabled - not needed for AR experience -->
+        <!-- <script src="./src/device-uuid.js"></script>
+        <script>
+            // https://github.com/biggora/device-uuid
+            // get Unique User ID
+            var uuidinfo = new DeviceUUID().parse();
+            let uuid = new DeviceUUID().get();  
+            console.log("real UUID:", uuid);
+        </script> -->
+
+        <script type="module">
+            import { App } from './app.js';
+
+            document.addEventListener("DOMContentLoaded", function(){
+                const app = new App();
+                window.app = app;
+            });
+        </script>
+  </body>
+</html>
